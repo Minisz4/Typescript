@@ -3,7 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+
+    <script src="./index.js" defer></script>
+    <title>Classic childrens books</title>
+    <link rel="stylesheet" href="styles.css">
   </head>
-  <body></body>
+  <body>
+    <main class="wrapper">
+      <section id="overlay">
+        <section id="overlay__content">
+          <button id="closeButton">X</button>
+          <div id="color__book"></div>
+          <h1 id="overlay__heading"></h1>
+          <h3 id="overlay__author"></h3>
+          <div class="books__info">
+            <p id="plot__book"></p>
+            <div id="book__information">
+              <p id="book__audience"></p>
+              <p id="book_pages"></p>
+              <p id="book__published"></p>
+              <p id="publisher"></p>
+          </div>
+        </section>
+      </section>
+      <section class="main__content">
+          <h1 id="mainHeader"><span id="number__books"></span>Classic Childrens books</h1>
+        <section id="books">
+        </section>
+      </section>
+    </main>
+
+  </body>
 </html>

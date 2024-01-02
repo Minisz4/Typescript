@@ -22,6 +22,5 @@ Använda dig av statiska typer och interface
 API-svaret (arrayen du får tillbaka) ska ha en datatyp och får inte vara any. Ex: const data: Dog[] = await response.json();
 För att få Väl Godkänt ska du:
 
-Ha delat upp din kod i moduler i Typescript, alla interface ska ligga i en egen modul och importeras.
-Det ska gå att söka på en specifik bok via ett inputfält och få information om denna.
+
 

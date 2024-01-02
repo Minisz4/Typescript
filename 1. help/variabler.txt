@@ -1,0 +1,19 @@
+class = wrapper
+id = overlay
+id overlay__content
+id = closeButton
+id = color__book
+id = overlay__heading
+id = overlay__author
+class = vooks__info
+id = plot_book
+id = book__information
+id = book__audience
+id = book__pages
+id = book__published
+id = publisher
+
+class = main__content
+id = main__header
+id = books
+Class = Childrens__books
