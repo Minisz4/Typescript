@@ -7,6 +7,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+let overlayDiv = document.getElementById("overlay");
+overlayDiv.style.display = "none";
+let buttonEl = document.getElementById("closeButton");
+buttonEl.addEventListener("click", function () {
+    overlayDiv.style.display = "none";
+});
 function fetchAPI(url) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -24,19 +30,42 @@ function fetchAPI(url) {
     });
 }
 function printAPI(data) {
+    let numberOfBooks = document.getElementById("number__books");
+    numberOfBooks.textContent = " " + data.length.toString();
     let booksContainer = document.getElementById("books");
     if (booksContainer) {
         data.forEach((book) => {
             const bookDiv = document.createElement("div");
             bookDiv.className = "book";
             bookDiv.style.backgroundColor = book.color;
+            const contentDiv = document.createElement("div");
             const titleHeader = document.createElement("h2");
             titleHeader.textContent = book.title;
-            bookDiv.appendChild(titleHeader);
+            contentDiv.appendChild(titleHeader);
             const authorHeader = document.createElement("h3");
             authorHeader.textContent = book.author;
-            bookDiv.appendChild(authorHeader);
+            contentDiv.appendChild(authorHeader);
+            bookDiv.appendChild(contentDiv);
             booksContainer.appendChild(bookDiv);
+            bookDiv.addEventListener("click", function () {
+                overlayDiv.style.display = "flex";
+                const overlayHeading = document.getElementById("overlay__heading");
+                overlayHeading.textContent = book.author;
+                const overlayTitle = document.getElementById("overlay__title");
+                overlayTitle.textContent = book.title;
+                const overlayPlot = document.getElementById("plot__book");
+                overlayPlot.textContent = book.plot;
+                const overlayAudience = document.getElementById("book__audience");
+                overlayAudience.textContent = book.audience;
+                const overlayPages = document.getElementById("book_pages");
+                overlayPages.textContent =
+                    book.pages !== null ? book.pages.toString() : "N/A";
+                const overlayPublished = document.getElementById("book__published");
+                overlayPublished.textContent =
+                    book.year !== null ? book.year.toString() : "N/A";
+                const overlayPublisher = document.getElementById("publisher");
+                overlayPublisher.textContent = book.publisher;
+            });
         });
     }
 }
