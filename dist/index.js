@@ -51,20 +51,24 @@ function printAPI(data) {
                 overlayDiv.style.display = "flex";
                 const overlayHeading = document.getElementById("overlay__heading");
                 overlayHeading.textContent = book.author;
+                overlayHeading.style.backgroundColor = book.color;
                 const overlayTitle = document.getElementById("overlay__title");
                 overlayTitle.textContent = book.title;
+                overlayTitle.style.backgroundColor = book.color;
+                const titleAuthorContainer = document.getElementById("title_author");
+                titleAuthorContainer.style.backgroundColor = book.color;
                 const overlayPlot = document.getElementById("plot__book");
-                overlayPlot.textContent = book.plot;
+                overlayPlot.textContent = "Plot: " + book.plot;
                 const overlayAudience = document.getElementById("book__audience");
-                overlayAudience.textContent = book.audience;
+                overlayAudience.textContent = "Audience: " + book.audience;
                 const overlayPages = document.getElementById("book_pages");
                 overlayPages.textContent =
-                    book.pages !== null ? book.pages.toString() : "N/A";
+                    "Pages: " + (book.pages !== null ? book.pages.toString() : "N/A");
                 const overlayPublished = document.getElementById("book__published");
                 overlayPublished.textContent =
-                    book.year !== null ? book.year.toString() : "N/A";
+                    "Year: " + (book.year !== null ? book.year.toString() : "N/A");
                 const overlayPublisher = document.getElementById("publisher");
-                overlayPublisher.textContent = book.publisher;
+                overlayPublisher.textContent = "Publisher:" + " " + book.publisher;
             });
         });
     }

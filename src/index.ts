@@ -61,32 +61,37 @@ function printAPI(data: Book[]) {
         const overlayHeading: HTMLElement =
           document.getElementById("overlay__heading");
         overlayHeading.textContent = book.author;
+        overlayHeading.style.backgroundColor = book.color;
 
         const overlayTitle: HTMLElement =
           document.getElementById("overlay__title");
         overlayTitle.textContent = book.title;
+        overlayTitle.style.backgroundColor = book.color;
+
+        const titleAuthorContainer: HTMLElement =
+          document.getElementById("title_author");
+        titleAuthorContainer.style.backgroundColor = book.color;
 
         const overlayPlot: HTMLElement = document.getElementById("plot__book");
-        overlayPlot.textContent = book.plot;
+        overlayPlot.textContent = "Plot: " + book.plot;
 
         const overlayAudience: HTMLElement =
           document.getElementById("book__audience");
-        overlayAudience.textContent = book.audience;
+        overlayAudience.textContent = "Audience: " + book.audience;
 
         const overlayPages = document.getElementById("book_pages");
-
         overlayPages.textContent =
-          book.pages !== null ? book.pages.toString() : "N/A";
+          "Pages: " + (book.pages !== null ? book.pages.toString() : "N/A");
 
         const overlayPublished: HTMLElement =
           document.getElementById("book__published");
 
         overlayPublished.textContent =
-          book.year !== null ? book.year.toString() : "N/A";
+          "Year: " + (book.year !== null ? book.year.toString() : "N/A");
 
         const overlayPublisher: HTMLElement =
           document.getElementById("publisher");
-        overlayPublisher.textContent = book.publisher;
+        overlayPublisher.textContent = "Publisher:" + " " + book.publisher;
       });
     });
   }
