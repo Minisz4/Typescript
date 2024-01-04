@@ -10,7 +10,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 let overlayDiv = document.getElementById("overlay");
 overlayDiv.style.display = "none";
 let buttonEl = document.getElementById("closeButton");
-console.log(buttonEl);
 buttonEl.addEventListener("click", function () {
     overlayDiv.style.display = "none";
     buttonEl.style.display = "block";

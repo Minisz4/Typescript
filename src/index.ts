@@ -1,7 +1,7 @@
 let overlayDiv: HTMLElement | null = document.getElementById("overlay");
 overlayDiv.style.display = "none";
 let buttonEl: HTMLElement | null = document.getElementById("closeButton");
-console.log(buttonEl);
+
 buttonEl.addEventListener("click", function () {
   overlayDiv.style.display = "none";
   buttonEl.style.display = "block";
