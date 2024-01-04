@@ -1,9 +1,10 @@
-let overlayDiv: HTMLElement = document.getElementById("overlay");
+let overlayDiv: HTMLElement | null = document.getElementById("overlay");
 overlayDiv.style.display = "none";
-
-let buttonEl: HTMLElement = document.getElementById("closeButton");
+let buttonEl: HTMLElement | null = document.getElementById("closeButton");
+console.log(buttonEl);
 buttonEl.addEventListener("click", function () {
   overlayDiv.style.display = "none";
+  buttonEl.style.display = "block";
 });
 
 interface Book {
@@ -18,7 +19,7 @@ interface Book {
   year: number;
 }
 
-async function fetchAPI(url: string) {
+async function fetchAPI(url: string): Promise<Book[]> {
   try {
     const response = await fetch(url);
     if (!response.ok) {
@@ -31,8 +32,9 @@ async function fetchAPI(url: string) {
     throw error;
   }
 }
-function printAPI(data: Book[]) {
-  let numberOfBooks: HTMLElement = document.getElementById("number__books");
+function printAPI(data: Book[]): void {
+  let numberOfBooks: HTMLElement | null =
+    document.getElementById("number__books");
   numberOfBooks.textContent = " " + data.length.toString();
   let booksContainer: HTMLElement | null = document.getElementById("books");
 
@@ -57,39 +59,42 @@ function printAPI(data: Book[]) {
       booksContainer.appendChild(bookDiv);
 
       bookDiv.addEventListener("click", function () {
-        overlayDiv.style.display = "flex";
-        const overlayHeading: HTMLElement =
+        overlayDiv.style.display =
+          overlayDiv.style.display === "none" ? "flex" : "none";
+        const overlayHeading: HTMLElement | null =
           document.getElementById("overlay__heading");
         overlayHeading.textContent = book.author;
         overlayHeading.style.backgroundColor = book.color;
 
-        const overlayTitle: HTMLElement =
+        const overlayTitle: HTMLElement | null =
           document.getElementById("overlay__title");
         overlayTitle.textContent = book.title;
         overlayTitle.style.backgroundColor = book.color;
 
-        const titleAuthorContainer: HTMLElement =
+        const titleAuthorContainer: HTMLElement | null =
           document.getElementById("title_author");
         titleAuthorContainer.style.backgroundColor = book.color;
 
-        const overlayPlot: HTMLElement = document.getElementById("plot__book");
+        const overlayPlot: HTMLElement | null =
+          document.getElementById("plot__book");
         overlayPlot.textContent = "Plot: " + book.plot;
 
-        const overlayAudience: HTMLElement =
+        const overlayAudience: HTMLElement | null =
           document.getElementById("book__audience");
         overlayAudience.textContent = "Audience: " + book.audience;
 
-        const overlayPages = document.getElementById("book_pages");
+        const overlayPages: HTMLElement | null =
+          document.getElementById("book_pages");
         overlayPages.textContent =
           "Pages: " + (book.pages !== null ? book.pages.toString() : "N/A");
 
-        const overlayPublished: HTMLElement =
+        const overlayPublished: HTMLElement | null =
           document.getElementById("book__published");
 
         overlayPublished.textContent =
           "Year: " + (book.year !== null ? book.year.toString() : "N/A");
 
-        const overlayPublisher: HTMLElement =
+        const overlayPublisher: HTMLElement | null =
           document.getElementById("publisher");
         overlayPublisher.textContent = "Publisher:" + " " + book.publisher;
       });

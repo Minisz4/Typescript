@@ -10,8 +10,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 let overlayDiv = document.getElementById("overlay");
 overlayDiv.style.display = "none";
 let buttonEl = document.getElementById("closeButton");
+console.log(buttonEl);
 buttonEl.addEventListener("click", function () {
     overlayDiv.style.display = "none";
+    buttonEl.style.display = "block";
 });
 function fetchAPI(url) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -48,7 +50,8 @@ function printAPI(data) {
             bookDiv.appendChild(contentDiv);
             booksContainer.appendChild(bookDiv);
             bookDiv.addEventListener("click", function () {
-                overlayDiv.style.display = "flex";
+                overlayDiv.style.display =
+                    overlayDiv.style.display === "none" ? "flex" : "none";
                 const overlayHeading = document.getElementById("overlay__heading");
                 overlayHeading.textContent = book.author;
                 overlayHeading.style.backgroundColor = book.color;
